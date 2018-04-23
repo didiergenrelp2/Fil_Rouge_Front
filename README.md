@@ -5,7 +5,7 @@
 - Maven (+ commandes exécuter/déployer)
 
 - SGBDR MySQL
-- schema.sql (création de la base et des tables)
+- documents/filrouge_shema.sql (création de la base et des tables)
 - data.sql (obtention des données)
 
 #### Modifications nécessaires (Java : /Fil_Rouge/src/main/resources/application.properties)
@@ -37,10 +37,11 @@ Via le fichier jar:
 #### Front
 1. Cloner le repo
 2. cd Fil_Rouge_Front
-3. ```npm install```
-4. ```npm install -g @angular/cli```
-5. ```ng serve -o```
-6. ```ng build``` (créer le dist/ avec l’index html)
+3. cd FilRougeFront
+4. ```npm install```
+5. ```npm install -g @angular/cli```
+6. ```ng serve -o```
+7. ```ng build``` (créer le dist/ avec l’index html)
 
 ## DIAGRAMMES
 
