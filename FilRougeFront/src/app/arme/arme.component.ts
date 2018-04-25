@@ -90,7 +90,9 @@ export class ArmeComponent implements OnInit {
 
   onSubmit() {
     if (this.edition) {
-      this.armesService.updateArme(this.arme).subscribe();
+      this.armesService.updateArme(this.arme).subscribe(
+        result=> {this.afficherMessage('Enregistrement effectué', '')},
+        error => {this.afficherMessage('', 'Arme déjà présente'); });
     } else {
       this.armesService.createArme(this.arme).subscribe(
         result=> {this.afficherMessage('Enregistrement effectué', '')},
