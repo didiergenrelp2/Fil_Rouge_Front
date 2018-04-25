@@ -4,7 +4,8 @@ import {
   MatTableDataSource,
   MatDialog,
   MatDialogConfig,
-  MatSort
+  MatSort,
+  MatSnackBar
 } from '@angular/material';
 import { AffaireService } from '../affaire.service';
 import { AjouterArmeAaffaireComponent } from '../ajouter-arme-aaffaire/ajouter-arme-aaffaire.component';
@@ -26,7 +27,7 @@ export class ArmeComponent implements OnInit {
 
   constructor(
     private armesService: ArmesService,
-    //private armeService: ArmesService,
+    private snackBar:MatSnackBar,
     public dialog: MatDialog,
     public dialog2: MatDialog
   ) {}
@@ -91,8 +92,16 @@ export class ArmeComponent implements OnInit {
     if (this.edition) {
       this.armesService.updateArme(this.arme).subscribe();
     } else {
-      this.armesService.createArme(this.arme).subscribe();
+      this.armesService.createArme(this.arme).subscribe(
+        result=> {this.afficherMessage('Enregistrement effectué', '')},
+        error => {this.afficherMessage('', 'Arme déjà présente'); });
     }
+  }
+  
+  afficherMessage(message:string, erreur: string){
+   this.snackBar.open(message,erreur, {
+     duration: 2000,
+   });
   }
 
   deleteArme() {
